@@ -1,0 +1,16 @@
+[project]
+name = "sample-uv-pre-commit-codebase"
+version = "0.1.0"
+description = "Sample UV and Pre-Commit Codebase"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-genai>=1.21.1",
+    "python-dotenv>=1.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.4.1",
+]

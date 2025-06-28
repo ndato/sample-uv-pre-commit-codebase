@@ -1,0 +1,18 @@
+# Environment Files
+.venv
+.env
+
+# Python Cache
+__pycache__
+
+# MacOS Files
+.DS_Store
+
+# Ruff
+.ruff_cache
+
+# MyPy
+.mypy_cache
+
+# Pytest
+.pytest_cache
