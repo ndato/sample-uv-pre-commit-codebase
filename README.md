@@ -24,13 +24,32 @@ A modern Python project template using [`uv`](https://github.com/astral-sh/uv) f
 
 ---
 
+## 🗂️ Project Structure
+
+```
+.
+├── tests/                    # Unit tests
+├── main.py                   # Main source code
+├── sample.env                # Copy and rename this file to .env then add the necessary Secret Values
+├── pyproject.toml            # Configuration for tools
+├── .python-version           # Python Version for Deployment
+├── uv.lock                   # Locked dependencies
+├── .pre-commit-config.yaml   # Pre-commit hooks
+├── .talismanrc               # Talisman setup, including files excluded from analysis
+├── LICENSE
+└── README.md
+```
+
+---
+
 ## 🚀 Getting Started
 
 This assumes we're starting from scratch. If you don't want to follow all these steps, clone the repository by doing the following:
 
 ```bash
-git clone https://github.com/your-username/python-template.git
-cd python-template
+git clone https://github.com/ndato/sample-uv-pre-commit-codebase
+cd sample-uv-pre-commit-codebase
+uv sync
 ```
 
 ### 📜 Old Way
@@ -38,8 +57,8 @@ cd python-template
 Just to remind you, this is the old way of starting a Python Project from scratch. Assuming you're on Windows and you have a `main.py` already, but no `requirements.txt`.
 
 ```bash
-mkdir codebase_name
-cd codebase_name
+mkdir sample-uv-pre-commit-codebase
+cd sample-uv-pre-commit-codebase
 python -m venv .venv
 .venv\Scripts\activate
 pip install \<Enumerate all packages here\>
@@ -100,21 +119,31 @@ uv run pre-commit
 
 ---
 
-## 🗂️ Project Structure
+## 🛠️ Trying out Toolings
 
+### Ruff and Ruff Formatter
+
+```bash
+uv add --dev ruff
+uv run ruff check
+uv run ruff format .
 ```
-.
-├── tests/                    # Unit tests
-├── main.py                   # Main source code
-├── sample.env                # Copy and rename this file to .env then add the necessary Secret Values
-├── pyproject.toml            # Configuration for tools
-├── .python-version           # Python Version for Deployment
-├── uv.lock                   # Locked dependencies
-├── .pre-commit-config.yaml   # Pre-commit hooks
-├── .talismanrc               # Talisman setup, including files excluded from analysis
-├── LICENSE
-└── README.md
+
+### MyPy
+
+```bash
+uv add --dev mypy
+uv run mypy
 ```
+
+### Bandit and Talisman
+
+```bash
+uv add --dev bandit talisman
+uv run bandit targets .
+```
+
+Note: Cannot run `talisman` outside of being a pre-commit hook as of now. If you want to, you can install `talisman` globally.
 
 ---
 
